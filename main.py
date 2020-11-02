@@ -28,10 +28,12 @@ dt = pandas.read_csv('Temperaturi.csv')
 
 dt.columns = ['Temp 1', 'Temp 2', 'Temp 3', 'Data']
 
+#Modificarea valorilor din fiecare coloana
 dt['Temp 1'] = dt['Temp 1'].apply(lambda x: (x+5)*4/0.37)
 dt['Temp 2'] = dt['Temp 2'].apply(lambda x: (x+5)*4/0.37)
 dt['Temp 3'] = dt['Temp 3'].apply(lambda x: (x+5)*4/0.37)
 
+#inlocuirea valorilor mai mici de -5
 a = np.array(dt['Temp 1'].values.tolist())
 dt['Temp 1'] = np.where(a<-5.0, -5.0, a).tolist()
 
@@ -43,12 +45,10 @@ dt['Temp 3'] = np.where(c<-5.0, 5.0, c).tolist()
 
 print("Erori:")
 print(dt[dt == -5.0].count())
-#print(dt)
 
 dt.to_csv('Temperaturi_modificate.csv')
 
 du = pandas.read_csv('Umiditate.csv')
-#print(du)
 
 a = np.array(du['Umiditate 1'].values.tolist())
 du['Umiditate 1'] = np.where(a>55, 54, a).tolist()
@@ -59,13 +59,9 @@ du['Umiditate 2'] = np.where(b>55, 54, b).tolist()
 c = np.array(du['Umiditate 3'].values.tolist())
 du['Umiditate 3'] = np.where(c>55, 54, c).tolist()
 
-#print(du)
-
 du.to_csv('Umiditate_modificate.csv')
 
 dv = pandas.read_csv('Viteza.csv')
-
-#print(dv)
 
 print("Media tuturor vitezelor este: ",dv['Viteza 1'].mean())
 
