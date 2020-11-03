@@ -46,8 +46,6 @@ dt['Temp 3'] = np.where(c<-5.0, 5.0, c).tolist()
 print("Erori:")
 print(dt[dt == -5.0].count())
 
-dt.to_csv('Temperaturi_modificate.csv')
-
 du = pandas.read_csv('Umiditate.csv')
 
 a = np.array(du['Umiditate 1'].values.tolist())
@@ -58,8 +56,6 @@ du['Umiditate 2'] = np.where(b>55, 54, b).tolist()
 
 c = np.array(du['Umiditate 3'].values.tolist())
 du['Umiditate 3'] = np.where(c>55, 54, c).tolist()
-
-du.to_csv('Umiditate_modificate.csv')
 
 dv = pandas.read_csv('Viteza.csv')
 
@@ -93,11 +89,26 @@ if x==1: #Listare fisier Date.csv
     dd = pandas.read_csv('Date.csv')
     print(dd)
 if x==2: #Listare citiri temperatura+data
-    print(dt)
+    d1 = pandas.read_csv('Temperaturi.csv')
+    print(d1)
 if x==3: #Listare citiri umiditate+data
-    print(du)
+    d2 = pandas.read_csv('Umiditate.csv')
+    print(d2)
 if x==4: #Listare viteza+data
-    print(dv)
+    d3 = pandas.read_csv('Viteza.csv')
+    print(d3)
 if x==5: #Listare prezenta+data
     dp = pandas.read_csv('Prezenta.csv')
     print(dp)
+if x==6: #Procesare citiri temperatura+date
+    print(dt)
+if x==7: #Procesare citiri umiditat+date
+    print(du)
+if x==8: #Procesare citiri viteza+date
+    print(dv)
+if x==9: #Salvare
+    dt.to_csv('Temperaturi_modificate.csv')
+    du.to_csv('Umiditate_modificate.csv')
+    print("Valorile au fost salvate")
+if x==0: #iesire
+    SystemExit
