@@ -71,27 +71,27 @@ x = int(input("Introduceti comanda dorita:"))
 
 if x==1: #Listare fisier Date.csv
     dd = pandas.read_csv('Date.csv')
-    print(dd)
+    print(dd.to_string())
 if x==2: #Listare citiri temperatura+data
     d1 = pandas.read_csv('Temperaturi.csv')
-    print(d1)
+    print(d1.to_string())
 if x==3: #Listare citiri umiditate+data
     d2 = pandas.read_csv('Umiditate.csv')
-    print(d2)
+    print(d2.to_string())
 if x==4: #Listare viteza+data
     d3 = pandas.read_csv('Viteza.csv')
-    print(d3)
+    print(d3.to_string())
 if x==5: #Listare prezenta+data
     dp = pandas.read_csv('Prezenta.csv')
-    print(dp)
+    print(dp.to_string())
 if x==6: #Procesare citiri temperatura+date
-    print(dt)
+    print(dt.to_string())
     print("Erori:")
     print(dt[dt == -5.0].count())
 if x==7: #Procesare citiri umiditat+date
-    print(du)
+    print(du.to_string())
 if x==8: #Procesare citiri viteza+date
-    print(dv)
+    print(dv.to_string())
     print("Media tuturor vitezelor este: ", dv['Viteza 1'].mean())
     print("Viteza 0-10:", dv.iloc[0:10].mean())
     print("Viteza 10-20:", dv.iloc[10:20].mean())
