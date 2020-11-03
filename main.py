@@ -56,16 +56,16 @@ du['Umiditate 3'] = np.where(c>55, 54, c).tolist()
 
 dv = pandas.read_csv('Viteza.csv')
 
-print("1. Listare fisier",
- "2. Listare citiri temperatura+data",
- "3. Listare citiri umiditate+data",
- "4. Listare citiri viteza+data",
- "5. Listare citiri prezenta+data",
- "6. Procesare citiri temperatura+data",
- "7. Procesare citiri umididate+data",
- "8. Procesare citiri viteza+data",
- "9. Salvare valori procesate in fisiere",
- "0. Exit")
+print("1. Listare fisier")
+print("2. Listare citiri temperatura+data")
+print("3. Listare citiri umiditate+data")
+print("4. Listare citiri viteza+data")
+print("5. Listare citiri prezenta+data")
+print("6. Procesare citiri temperatura+data")
+print("7. Procesare citiri umididate+data")
+print("8. Procesare citiri viteza+data")
+print("9. Salvare valori procesate in fisiere")
+print("0. Exit")
 
 x = int(input("Introduceti comanda dorita:"))
 
