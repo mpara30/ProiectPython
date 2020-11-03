@@ -43,9 +43,6 @@ dt['Temp 2'] = np.where(b<-5.0, -5.0, b).tolist()
 c = np.array(dt['Temp 3'].values.tolist())
 dt['Temp 3'] = np.where(c<-5.0, 5.0, c).tolist()
 
-print("Erori:")
-print(dt[dt == -5.0].count())
-
 du = pandas.read_csv('Umiditate.csv')
 
 a = np.array(du['Umiditate 1'].values.tolist())
@@ -58,19 +55,6 @@ c = np.array(du['Umiditate 3'].values.tolist())
 du['Umiditate 3'] = np.where(c>55, 54, c).tolist()
 
 dv = pandas.read_csv('Viteza.csv')
-
-print("Media tuturor vitezelor este: ",dv['Viteza 1'].mean())
-
-print("Viteza 0-10:",dv.iloc[0:10].mean())
-print("Viteza 10-20:",dv.iloc[10:20].mean())
-print("Viteza 20-30:",dv.iloc[20:30].mean())
-print("Viteza 30-40:",dv.iloc[30:40].mean())
-print("Viteza 40-50:",dv.iloc[40:50].mean())
-print("Viteza 50-60:",dv.iloc[50:60].mean())
-print("Viteza 60-70:",dv.iloc[60:70].mean())
-print("Viteza 70-80:",dv.iloc[70:80].mean())
-print("Viteza 80-90:",dv.iloc[80:90].mean())
-print("Viteza 90-100:",dv.iloc[90:100].mean())
 
 print("1. Listare fisier",
  "2. Listare citiri temperatura+data",
@@ -85,30 +69,43 @@ print("1. Listare fisier",
 
 x = int(input("Introduceti comanda dorita:"))
 
-if x==1: #Listare fisier Date.csv
-    dd = pandas.read_csv('Date.csv')
-    print(dd)
-if x==2: #Listare citiri temperatura+data
-    d1 = pandas.read_csv('Temperaturi.csv')
-    print(d1)
-if x==3: #Listare citiri umiditate+data
-    d2 = pandas.read_csv('Umiditate.csv')
-    print(d2)
-if x==4: #Listare viteza+data
-    d3 = pandas.read_csv('Viteza.csv')
-    print(d3)
-if x==5: #Listare prezenta+data
-    dp = pandas.read_csv('Prezenta.csv')
-    print(dp)
-if x==6: #Procesare citiri temperatura+date
-    print(dt)
-if x==7: #Procesare citiri umiditat+date
-    print(du)
-if x==8: #Procesare citiri viteza+date
-    print(dv)
-if x==9: #Salvare
-    dt.to_csv('Temperaturi_modificate.csv')
-    du.to_csv('Umiditate_modificate.csv')
-    print("Valorile au fost salvate")
-if x==0: #iesire
-    SystemExit
+while x != 0:
+    if x == 1:  # Listare fisier Date.csv
+        dd = pandas.read_csv('Date.csv')
+        print(dd)
+    if x == 2:  # Listare citiri temperatura+data
+        d1 = pandas.read_csv('Temperaturi.csv')
+        print(d1)
+    if x == 3:  # Listare citiri umiditate+data
+        d2 = pandas.read_csv('Umiditate.csv')
+        print(d2)
+    if x == 4:  # Listare viteza+data
+        d3 = pandas.read_csv('Viteza.csv')
+        print(d3)
+    if x == 5:  # Listare prezenta+data
+        dp = pandas.read_csv('Prezenta.csv')
+        print(dp)
+    if x == 6:  # Procesare citiri temperatura+date
+        print(dt)
+        print("Erori:")
+        print(dt[dt == -5.0].count())
+    if x == 7:  # Procesare citiri umiditat+date
+        print(du)
+    if x == 8:  # Procesare citiri viteza+date
+        print(dv)
+        print("Media tuturor vitezelor este: ", dv['Viteza 1'].mean())
+        print("Viteza 0-10:", dv.iloc[0:10].mean())
+        print("Viteza 10-20:", dv.iloc[10:20].mean())
+        print("Viteza 20-30:", dv.iloc[20:30].mean())
+        print("Viteza 30-40:", dv.iloc[30:40].mean())
+        print("Viteza 40-50:", dv.iloc[40:50].mean())
+        print("Viteza 50-60:", dv.iloc[50:60].mean())
+        print("Viteza 60-70:", dv.iloc[60:70].mean())
+        print("Viteza 70-80:", dv.iloc[70:80].mean())
+        print("Viteza 80-90:", dv.iloc[80:90].mean())
+        print("Viteza 90-100:", dv.iloc[90:100].mean())
+    if x == 9:  # Salvare
+        dt.to_csv('Temperaturi_modificate.csv')
+        du.to_csv('Umiditate_modificate.csv')
+        print("Valorile au fost salvate")
+print("La revedere")
