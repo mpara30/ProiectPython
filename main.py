@@ -8,32 +8,31 @@ fisier_prezenta="Prezenta.csv"
 
 with open(nume_fisier, 'r', newline='') as csvfile:
     catalog_read = csv.reader(csvfile, delimiter=',',quotechar='!')
-    for row in catalog_read:
-        with open(fisier_temp, 'a', newline='') as csvfile_temp:
-            catalog_write_temp = csv.writer(csvfile_temp, delimiter=',',quotechar='!', quoting=csv.QUOTE_MINIMAL)
-            catalog_write_temp.writerow([row[0],row[1],row[2],row[9]])
-        with open(fisier_umd, 'a', newline='') as csvfile_umd:
-            catalog_write_umd = csv.writer(csvfile_umd, delimiter=',',quotechar='!',quoting=csv.QUOTE_MINIMAL)
-            catalog_write_umd.writerow([row[3],row[4],row[5],row[9]])
-        with open(fisier_viteza, 'a', newline='') as csvfile_viteza:
-            catalog_write_viteza = csv.writer(csvfile_viteza, delimiter=',',quotechar='!',quoting=csv.QUOTE_MINIMAL)
-            catalog_write_viteza.writerow([row[6],row[9]])
-        with open(fisier_prezenta, 'a', newline='') as csvfile_prezenta:
-            catalog_write_prezenta = csv.writer(csvfile_prezenta, delimiter=',',quotechar='!',quoting=csv.QUOTE_MINIMAL)
-            catalog_write_prezenta.writerow([row[7],row[8],row[9]])
+   # for row in catalog_read:
+      #  with open(fisier_temp, 'a', newline='') as csvfile_temp:
+          #  catalog_write_temp = csv.writer(csvfile_temp, delimiter=',',quotechar='!', quoting=csv.QUOTE_MINIMAL)
+           # catalog_write_temp.writerow([row[0],row[1],row[2],row[9]])
+       # with open(fisier_umd, 'a', newline='') as csvfile_umd:
+         #   catalog_write_umd = csv.writer(csvfile_umd, delimiter=',',quotechar='!',quoting=csv.QUOTE_MINIMAL)
+           # catalog_write_umd.writerow([row[3],row[4],row[5],row[9]])
+       # with open(fisier_viteza, 'a', newline='') as csvfile_viteza:
+          #  catalog_write_viteza = csv.writer(csvfile_viteza, delimiter=',',quotechar='!',quoting=csv.QUOTE_MINIMAL)
+          #  catalog_write_viteza.writerow([row[6],row[9]])
+        #with open(fisier_prezenta, 'a', newline='') as csvfile_prezenta:
+           # catalog_write_prezenta = csv.writer(csvfile_prezenta, delimiter=',',quotechar='!',quoting=csv.QUOTE_MINIMAL)
+           # catalog_write_prezenta.writerow([row[7],row[8],row[9]])
 import pandas
 import numpy as np
+import matplotlib.pyplot as plt
 
 dt = pandas.read_csv('Temperaturi.csv')
 
 dt.columns = ['Temp 1', 'Temp 2', 'Temp 3', 'Data']
 
-#Modificarea valorilor din fiecare coloana
 dt['Temp 1'] = dt['Temp 1'].apply(lambda x: (x+5)*4/0.37)
 dt['Temp 2'] = dt['Temp 2'].apply(lambda x: (x+5)*4/0.37)
 dt['Temp 3'] = dt['Temp 3'].apply(lambda x: (x+5)*4/0.37)
 
-#inlocuirea valorilor mai mici de -5
 a = np.array(dt['Temp 1'].values.tolist())
 dt['Temp 1'] = np.where(a<-5.0, -5.0, a).tolist()
 
@@ -110,4 +109,35 @@ while(x!=0):
         print("Valorile au fost salvate")
     x = int(input("Introduceti comanda dorita:"))
 print("La revedere!")
+
+x = []
+y = [] #temperatura 1
+z = [] #temperatura 2
+w = [] #temperatura 3
+
+class grafice_statice ():
+    def run(self):
+        with open('Temperaturi_modificate.csv.csv', 'r') as csvfile:
+            date = csv.reader(csvfile, delimiter= ',')
+
+            for row in date:
+                pass
+            try:
+                y.append(float(row[0]))
+                z.append(float(row[1]))
+                w.append(float(row[2]))
+                x.append(row[3])
+            except Exception as e:
+                pass
+        plt.figure(1)
+        plt.plot(x, z, label='Temp 1!')
+        plt.plot(x, y, label='Temp 2!')
+        plt.plot(x, w, label='Temp 3!')
+        plt.xlabel('timp')
+        plt.ylabel('temperatura')
+        plt.title('temp(timp)')
+        plt.legend()
+        plt.xticks([0,50,99])
+
+
 
