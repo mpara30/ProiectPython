@@ -10,6 +10,7 @@ class conexiune():
         serversocket.bind((host, port))
         serversocket.listen(5)
         return serversocket
+    #Se deschide un port pentru a porni conexiunea TCP
 
     def sendfile(s):
         clientsocket,addr = s.accept()
@@ -18,7 +19,11 @@ class conexiune():
             date_read = csv.reader(csvfile, delimiter=',', quotechar='|')
             for row in date_read:
                 clientsocket.send(str(row).encode('utf-8'))
+        #Se distribuie un fisier prin conexiunea TCP
 
-        clientsocket.close()
+        clientsocket.close() #Se inchide conexiunea
 
-    sendfile(functie())
+    sendfile(functie()) #Se executa functia de transmitere a fisierului
+
+
+
